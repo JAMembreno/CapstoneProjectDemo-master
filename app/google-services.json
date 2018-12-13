@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "134513045266",
+    "firebase_url": "https://capstoneprojectfall2018.firebaseio.com",
+    "project_id": "capstoneprojectfall2018",
+    "storage_bucket": "capstoneprojectfall2018.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134513045266:android:bdc9657fbd25bd65",
+        "android_client_info": {
+          "package_name": "com.rhythm.quest.capstoneproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "134513045266-5hbg6qeic2ahinll03m34crveav88f7d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rhythm.quest.capstoneproject",
+            "certificate_hash": "8a35fccd66b43b6f7422c80a29a8b020a734825b"
+          }
+        },
+        {
+          "client_id": "134513045266-3v2qknslc4r1pdrlift90vdv817pbvvj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz27P6_FmNGLiFyb4KxR1NtNsLdeP6Oik"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "134513045266-3v2qknslc4r1pdrlift90vdv817pbvvj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

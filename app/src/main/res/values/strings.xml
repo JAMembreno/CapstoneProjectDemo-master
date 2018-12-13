@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">CapstoneProject</string>
+    <string name="welcome_to_rhythmquest">Welcome to RhythmQuest</string>
+    <string name="press_note_part_1">  1: How to press the note part 1  </string>
+    <string name="press_note_part_2">  2: How to press the note part 2  </string>
+    <string name="note_combo">  3: Evaluation and Combo  </string>
+    <string name="unison_note">  4: Type of note: Unison Note  </string>
+    <string name="type_of_note_hold">  5: Type of note: Hold Note  </string>
+    <string name="entire_song">  6: Practice Entire Song  </string>
+    <string name="todo">TODO</string>
+    <string name="Score">Score: 0</string>
+    <string name="miss">Misses: 0</string>
+    <string name="instruction">First Notes will appear in the corner circles on the screen and will move towards the center.
+        The goal is to press the corresponding circle while notes are traveling towards the center.
+        For each button note correctly pressed, you will gain one point.</string>
+    <string name="lives">Lives:</string>
+    <string name="info1">Song Name: Specialist \n\nDuration: 2:20s \n\nDifficulty: Easy \n\n</string>
+    <string name="info2">Song Name: Instrumental \n\nDuration: 3:00s \n\nDifficulty: Medium \n\n</string>
+    <string name="info3">Song Name: Elevator Music \n\nDuration: 1:00s \n\nDifficulty: Hard \n\n</string>
+</resources>
