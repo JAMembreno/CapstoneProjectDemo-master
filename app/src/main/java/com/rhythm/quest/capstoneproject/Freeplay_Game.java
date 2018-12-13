@@ -3,6 +3,7 @@ package com.rhythm.quest.capstoneproject;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -17,7 +18,9 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -223,13 +226,16 @@ public class Freeplay_Game extends AppCompatActivity {
                         {
                             endSequenceStart=true;
                             endSequence();
+                            MediaPlayer track1 = MediaPlayer.create(Freeplay_Game.this, R.raw.track4);
+                            track1.stop();
                         }
 
                         randomNum = r.nextInt(4);//gets new random number between 0 and 3
 
                         //makes a note at the position specified by random
                         pic = new ImageView(Freeplay_Game.this);
-                        pic.setImageResource(color[randomNum]);
+                       // pic.setImageResource(color[randomNum]);
+                        pic.setImageResource(R.drawable.professor_icon);
                         pic.setLayoutParams(new ConstraintLayout.LayoutParams(noteWidth,noteHeight));
                         pic.setY(YLocation[randomNum]);
                         pic.setX(XLocation[randomNum]);
@@ -280,7 +286,9 @@ public class Freeplay_Game extends AppCompatActivity {
             ObjectAnimator x = ObjectAnimator.ofFloat(v,
                     "translationX", Px, v2.getX());
 
-            animSetXY.playTogether(x, y);
+            ObjectAnimator rotate = ObjectAnimator.ofFloat(v, "rotation", 0f, 360f);
+
+            animSetXY.playTogether(x, y, rotate);
             animSetXY.setInterpolator(new LinearInterpolator());
             animSetXY.setDuration(speed);
             animSetXY.start();
@@ -321,11 +329,18 @@ public class Freeplay_Game extends AppCompatActivity {
                 finish();
                 Intent intent=new Intent(this,Freeplay_Game.class);
                 startActivity(intent);
+                MediaPlayer track1 = MediaPlayer.create(Freeplay_Game.this, R.raw.track4);
+                track1.stop();
             });
             Button continueOn=dialog2.findViewById(R.id.continueGame);
             continueOn.setOnClickListener(v4->{
                 dialog2.dismiss();
                 finish();
+                Intent background_music = new Intent(Freeplay_Game.this, BackgroundSoundService.class);
+                background_music.setAction("com.example.BackgroundSoundService");
+                startService(background_music);
+                MediaPlayer track1 = MediaPlayer.create(Freeplay_Game.this, R.raw.track4);
+                track1.stop();
             });
             dialog2.show();
         }
