@@ -23,7 +23,7 @@
         android:id="@+id/top"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Something"
+        android:text="Log Out"
         android:gravity="center"
         android:background="@drawable/dialog_buttons"
         app:layout_constraintRight_toRightOf="parent"

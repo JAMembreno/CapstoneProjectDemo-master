@@ -1,6 +1,7 @@
 package com.rhythm.quest.capstoneproject;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,11 +9,15 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class LeaderboardMode extends AppCompatActivity {
+    int muting=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard_mode);
+
+        SharedPreferences sharedPref=getSharedPreferences("MusicMute", MODE_PRIVATE);
+        muting = sharedPref.getInt("Mute",0);
 
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(
@@ -31,7 +36,8 @@ public class LeaderboardMode extends AppCompatActivity {
         stopService(svc);
 
         MediaPlayer leaderboard_background_music = MediaPlayer.create(LeaderboardMode.this, R.raw.leaderboard_background_music);
-        leaderboard_background_music.start();
+        if(muting==0)
+            leaderboard_background_music.start();
 
         final ImageView back_btn = findViewById(R.id.back_btn);
         back_btn.setOnClickListener(new View.OnClickListener() {
@@ -43,7 +49,8 @@ public class LeaderboardMode extends AppCompatActivity {
 
                 Intent svc = new Intent(LeaderboardMode.this, BackgroundSoundService.class);
                 svc.setAction("com.example.BackgroundSoundService");
-                startService(svc);
+                if(muting==0)
+                    startService(svc);
 
                 leaderboard_background_music.stop();
                 finish();

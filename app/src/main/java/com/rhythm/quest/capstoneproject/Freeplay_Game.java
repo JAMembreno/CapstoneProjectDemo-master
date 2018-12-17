@@ -5,6 +5,7 @@ import android.animation.ObjectAnimator;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
@@ -73,6 +74,7 @@ public class Freeplay_Game extends AppCompatActivity {
     int heartNum=9;
     boolean endSequenceStart=false;
    //boolean skip=false;
+    int muting=0;
 
 
 
@@ -81,6 +83,8 @@ public class Freeplay_Game extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.freeplay__game);
+        SharedPreferences sharedPref=getSharedPreferences("MusicMute", MODE_PRIVATE);
+        muting = sharedPref.getInt("Mute",0);
 
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(
@@ -107,7 +111,8 @@ public class Freeplay_Game extends AppCompatActivity {
         startGame.setOnClickListener(v1->{
             dialog1.dismiss();
             MediaPlayer track1 = MediaPlayer.create(Freeplay_Game.this, R.raw.track4);
-            track1.start();
+            if(muting==0)
+                track1.start();
             constraintLayout=findViewById(R.id.gamelayout);
             singleNote=findViewById(R.id.singleNote);
             int noteWidth=singleNote.getWidth();
@@ -197,9 +202,11 @@ public class Freeplay_Game extends AppCompatActivity {
 
                 Intent background_music = new Intent(Freeplay_Game.this, BackgroundSoundService.class);
                 background_music.setAction("com.example.BackgroundSoundService");
-                startService(background_music);
+                if(muting==0)
+                    startService(background_music);
 
                 track1.stop();
+                finish();
             });
 
             //handles the looping of notes

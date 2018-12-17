@@ -38,7 +38,7 @@ public class SelectMode extends AppCompatActivity {
                 Intent registerIntent = new Intent(SelectMode.this,Freeplay_Game.class);
                 //FreeDance
                 SelectMode.this.startActivity(registerIntent);
-                
+                finish();
             }
         });
 
@@ -46,6 +46,7 @@ public class SelectMode extends AppCompatActivity {
             public void onClick(View v) {
                 Intent registerIntent = new Intent(SelectMode.this, TutorialMode.class);
                 SelectMode.this.startActivity(registerIntent);
+                finish();
             }
         });
 
@@ -53,6 +54,7 @@ public class SelectMode extends AppCompatActivity {
             public void onClick(View v) {
                 Intent registerIntent = new Intent(SelectMode.this, LeaderboardMode.class);
                 SelectMode.this.startActivity(registerIntent);
+                finish();
             }
         });
 
@@ -60,6 +62,7 @@ public class SelectMode extends AppCompatActivity {
             public void onClick(View v) {
                 Intent registerIntent = new Intent(SelectMode.this, MusicBoxMode.class);
                 SelectMode.this.startActivity(registerIntent);
+                finish();
             }
         });
 
@@ -67,6 +70,7 @@ public class SelectMode extends AppCompatActivity {
             public void onClick(View v) {
                 Intent registerIntent = new Intent(SelectMode.this, ConfigMode.class);
                 SelectMode.this.startActivity(registerIntent);
+                finish();
             }
         });
 

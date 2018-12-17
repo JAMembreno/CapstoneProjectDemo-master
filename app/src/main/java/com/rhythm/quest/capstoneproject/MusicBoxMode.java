@@ -1,6 +1,7 @@
 package com.rhythm.quest.capstoneproject;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.RawRes;
@@ -21,6 +22,7 @@ public class MusicBoxMode extends AppCompatActivity {
     Button startGame;
     Button nextSong;
     int songPosition=0;
+    int muting=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,11 @@ public class MusicBoxMode extends AppCompatActivity {
         setContentView(R.layout.activity_music_box_mode);
         String songInfo[]=new String[]{getResources().getString(R.string.info1),getResources().getString(R.string.info2),getResources().getString(R.string.info3)};
         int image[]=new int[]{R.raw.image_holder,R.raw.music_background,R.raw.musicnotes};
+
+        SharedPreferences sharedPref=getSharedPreferences("MusicMute", MODE_PRIVATE);
+        muting = sharedPref.getInt("Mute",0);
+
+
 
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(
@@ -84,7 +91,8 @@ public class MusicBoxMode extends AppCompatActivity {
 
                 Intent svc = new Intent(MusicBoxMode.this, BackgroundSoundService.class);
                 svc.setAction("com.example.BackgroundSoundService");
-                startService(svc);
+                if(muting==0)
+                    startService(svc);
                 finish();
             }
         });

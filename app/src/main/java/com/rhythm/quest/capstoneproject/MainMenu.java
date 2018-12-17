@@ -1,6 +1,7 @@
 package com.rhythm.quest.capstoneproject;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.widget.ImageView;
 
 public class MainMenu extends AppCompatActivity {
     final int RC_SIGN_IN = 123, RC_PHOTO_PICKER = 12;
+    int muting=0;
+
 
     private static final int CAMERA_REQUEST = 1888;
     private ImageView imageView;
@@ -17,6 +20,11 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        SharedPreferences sharedPref=getSharedPreferences("MusicMute", MODE_PRIVATE);
+        muting = sharedPref.getInt("Mute",0);
+
+
 
 
         View decorView = getWindow().getDecorView();
@@ -34,9 +42,13 @@ public class MainMenu extends AppCompatActivity {
       //  MediaPlayer background_music= MediaPlayer.create(MainMenu.this,R.raw.background_music);
       //  background_music.start();
 
-        Intent svc = new Intent(this, BackgroundSoundService.class);
-        svc.setAction("com.example.BackgroundSoundService");
-        startService(svc);
+        if(muting==0)
+        {
+            Intent svc = new Intent(this, BackgroundSoundService.class);
+            svc.setAction("com.example.BackgroundSoundService");
+            startService(svc);
+        }
+
 
 
         final ImageView mainMenu = findViewById(R.id.main_menu);
