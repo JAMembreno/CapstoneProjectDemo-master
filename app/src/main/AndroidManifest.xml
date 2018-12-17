@@ -46,7 +46,6 @@
         <activity
             android:name=".ConfigMode"
             android:screenOrientation="landscape" />
-
         <activity
             android:name=".Freeplay_Game"
             android:screenOrientation="landscape" />
@@ -55,6 +54,7 @@
             android:name=".BackgroundSoundService"
             android:enabled="true" />
 
+        <activity android:name=".RateUs"></activity>
     </application>
 
 </manifest>

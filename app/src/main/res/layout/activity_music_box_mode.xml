@@ -86,6 +86,7 @@
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="#fff"
-        android:background="#000000" />
+        android:gravity="center_horizontal"
+        android:background="@drawable/dialog_buttons" />
 
 </android.support.constraint.ConstraintLayout>

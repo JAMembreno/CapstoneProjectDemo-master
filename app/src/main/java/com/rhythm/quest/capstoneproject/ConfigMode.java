@@ -5,14 +5,21 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class ConfigMode extends AppCompatActivity {
+
+    Button pauseMusic;
+    Button rateUs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_config_mode);
+
+        pauseMusic=findViewById(R.id.sound);
+        rateUs=findViewById(R.id.rate_us);
 
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(
@@ -47,5 +54,15 @@ public class ConfigMode extends AppCompatActivity {
                 config_background_music.stop();
             }
         });
+
+        pauseMusic.setOnClickListener(v->{
+        config_background_music.setVolume(0,0);
+        });
+
+        rateUs.setOnClickListener(v->{
+                Intent i=new Intent(this,RateUs.class);
+                startActivity(i);
+        });
+
     }
 }

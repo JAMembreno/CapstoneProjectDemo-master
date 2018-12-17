@@ -18,4 +18,40 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/go_back_blue"
         android:contentDescription="TODO" />
+
+    <Button
+        android:id="@+id/top"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Something"
+        android:gravity="center"
+        android:background="@drawable/dialog_buttons"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/sound"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/sound"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text=" Sound: On"
+        android:gravity="center"
+        android:background="@drawable/dialog_buttons"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/rate_us"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Rate Us"
+        android:gravity="center"
+        android:background="@drawable/dialog_buttons"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sound"
+        android:layout_marginTop="20dp"/>
 </android.support.constraint.ConstraintLayout>

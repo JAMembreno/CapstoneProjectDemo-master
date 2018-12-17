@@ -49,6 +49,7 @@ public class Freeplay_Game extends AppCompatActivity {
     int randomNum;
     int currentScore=0;
     boolean clicked=true;
+    boolean alreadyPressed=false;
     ImageView pic;
     AnimatorSet animSetXY;
     int miss=0;
@@ -208,6 +209,7 @@ public class Freeplay_Game extends AppCompatActivity {
                     public void run() {
                         missed.setVisibility(View.INVISIBLE);
                         hit.setVisibility(View.INVISIBLE);
+                        alreadyPressed=false;
                        // if(!skip) {
                             if (clicked)
                                 clicked = false;
@@ -234,8 +236,7 @@ public class Freeplay_Game extends AppCompatActivity {
 
                         //makes a note at the position specified by random
                         pic = new ImageView(Freeplay_Game.this);
-                       // pic.setImageResource(color[randomNum]);
-                        pic.setImageResource(R.drawable.professor_icon);
+                        pic.setImageResource(color[randomNum]);
                         pic.setLayoutParams(new ConstraintLayout.LayoutParams(noteWidth,noteHeight));
                         pic.setY(YLocation[randomNum]);
                         pic.setX(XLocation[randomNum]);
@@ -352,7 +353,12 @@ public class Freeplay_Game extends AppCompatActivity {
             {
                 case R.id.topLeft_circle:
                     clicked=true;
-                    if(randomNum==1) {
+                    if(alreadyPressed)
+                    {
+                        break;
+                    }
+                    else if(randomNum==1) {
+                        alreadyPressed=true;
                         score.setText("Score: " + String.valueOf(++currentScore));
                         animSetXY.end();
                         constraintLayout.removeView(pic);
@@ -361,6 +367,7 @@ public class Freeplay_Game extends AppCompatActivity {
                     }
                     else
                     {
+                        alreadyPressed=true;
                         hit.setVisibility(View.INVISIBLE);
                         missed.setVisibility(View.VISIBLE);
                         if(heartNum>=0)
@@ -377,7 +384,10 @@ public class Freeplay_Game extends AppCompatActivity {
                     break;
                 case R.id.topRight_circle:
                     clicked=true;
-                    if(randomNum==0) {
+                    if(alreadyPressed)
+                        break;
+                    else if(randomNum==0) {
+                        alreadyPressed=true;
                         score.setText("Score: " + String.valueOf(++currentScore));
                         animSetXY.end();
                         constraintLayout.removeView(pic);
@@ -386,6 +396,7 @@ public class Freeplay_Game extends AppCompatActivity {
                     }
                     else
                     {
+                        alreadyPressed=true;
                         hit.setVisibility(View.INVISIBLE);
                         missed.setVisibility(View.VISIBLE);
                         if(heartNum>=0)
@@ -402,7 +413,10 @@ public class Freeplay_Game extends AppCompatActivity {
                     break;
                 case R.id.bottomLeft_circle:
                     clicked=true;
-                    if(randomNum==3) {
+                    if(alreadyPressed)
+                        break;
+                    else if(randomNum==3) {
+                        alreadyPressed=true;
                         score.setText("Score: " + String.valueOf(++currentScore));
                         animSetXY.end();
                         constraintLayout.removeView(pic);
@@ -411,6 +425,7 @@ public class Freeplay_Game extends AppCompatActivity {
                     }
                     else
                     {
+                        alreadyPressed=true;
                         hit.setVisibility(View.INVISIBLE);
                         missed.setVisibility(View.VISIBLE);
                         if(heartNum>=0)
@@ -427,7 +442,10 @@ public class Freeplay_Game extends AppCompatActivity {
                     break;
                 case R.id.bottomRight_circle:
                     clicked=true;
-                    if(randomNum==2) {
+                    if(alreadyPressed)
+                        break;
+                    else if(randomNum==2) {
+                        alreadyPressed=true;
                         score.setText("Score: " + String.valueOf(++currentScore));
                         animSetXY.end();
                         constraintLayout.removeView(pic);
@@ -436,6 +454,7 @@ public class Freeplay_Game extends AppCompatActivity {
                     }
                     else
                     {
+                        alreadyPressed=true;
                         hit.setVisibility(View.INVISIBLE);
                         missed.setVisibility(View.VISIBLE);
                         if(heartNum>=0)
